@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .accordion-item {
+        border: 1px solid #000;
+        border-radius: 0.25rem;
+
+    }
+
+    .nav-link.active {
+        color: black;
+    }
+
+    .nav-link:hover {
+        color: black;
+
+    }
+
+    .nav-link {
+        color: #6c757d;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row mx-3 mt-4">
+        <div class="col">
+            <div class="d-flex justify-content-center align-items-center border border-dark shadow-lg rounded-3"
+                style="height:600px; background: url('https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80') no-repeat; background-position: center; background-size: cover;">
+                <div class="text-left text-white" style=" width: 70%; padding: 20px;">
+                    <h1 style="font-size: 6.5rem;">Welcome</h1>
+                    <!-- 80 characters max -->
+                    <p id="typedtext" data-text="{{ userProfile2.desc }}" style=" font-size: 3rem;"></p>
+                    <div class="pt-3">
+                        <button class="btn btn-outline-light px-5">Connect with me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid" style="min-height: 400px; margin-bottom: 100px;">
+    <div class="row mx-3 mt-4">
+        <div class="col">
+            <div class="row">
+                <div class="col-lg-6 mycontent-left text-center" style="margin-top: 5%;">
+                    <h1 style=" font-size: 2.5rem;">About Me</h1>
+                    <p class="custom-wrap paragraph-font">
+                        {{ userProfile2.about }}
+                    </p>
+                </div>
+                <div class="col-lg-6 text-left" style="margin-top: 5%;">
+                    <h1 style="font-size: 1.5rem; text-align: center;">Experiences</h1>
+                    <br>
+                    <div class="accordion" id="accordionExample" style="height: 300px; overflow-y: auto;">
+
+                        {% for index, item in enumerate(userExperience2) %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ index }}">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse{{ index }}" aria-expanded="true"
+                                    aria-controls="collapse{{ index }}">
+                                    {{ item.title_exp }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ index }}"
+                                class="accordion-collapse collapse {% if index == 0 %}show{% endif %}"
+                                aria-labelledby="heading{{ index }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p class="mycontent-left">{{ item.body_exp }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid" id="blogs" style="background-color: #F9F8F4; margin-bottom: 40px;">
+    <div class="row mx-auto mt-4">
+        <div>
+            <h1 style="font-size: 2.5rem; margin-top: 40px; text-align: center;">Pick a card</h1>
+
+            <div class="mx-auto">
+                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active d-flex flex-column" id="home" role="tabpanel"
+                        aria-labelledby="home-tab">
+                        <div class="card mx-auto" style="width: 40%;">
+                            <div class=" card-body mt-2 mb-2">
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="font-size: 0.8rem; color:gray;">Mar 14, 2023</p>
+                                        <h1 style="font-size: 1.2rem;">Hello</h1>
+                                        <p>A UI design
+                                            case study to redesign an example user
+                                            interface
+                                            using
+                                            logical rules or
+                                            guidelines — Last updated in Jan
+                                            2024 User interface design is hard. With so many options to choose from
+                                            regarding
+                                            200,</p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
+                                            style="width: 150px; height: 150px;">
+
+                                    </div>
+                                </div>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">123</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">Create a Blog</h1>
+    <form method="post">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
+        <div id="titleHelp" class="form-text">Make it a good one!</div>
+
+        <textarea id="summernote" name="editordata"></textarea>
+
+        <select class="form-select" aria-label="Default select example" style="margin-top:20px; margin-bottom: 20px;">
+            <option selected>Choose a category</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+
+        <div class="button-container pb-5">
+            <button type="submit" class="btn btn-outline-success">Create</button>
+            <button type="button" class="btn btn-outline-warning"
+                onclick="window.location.href='/homepage'">Discard</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            codeviewFilter: true,
+            codeviewIframeFilter: true,
+            height: 400,
+            placeholder: "Type something here"
+        });
+    });
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .container-fluid {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 50%;
+        min-width: 300px;
+    }
+
+    #regForm {
+        margin: auto;
+        font-family: Raleway;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input,
+    textarea {
+        padding: 10px;
+        width: 100%;
+        font-family: Raleway;
+
+    }
+
+    /* Mark input boxes that get an error on validation: */
+    input.invalid {
+        background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+    }
+
+    button {
+        background-color: #04AA6D;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.8;
+
+    }
+
+    #prevBtn {
+        background-color: #bbbbbb;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+    .step.active {
+        opacity: 1;
+
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #04AA6D;
+    }
+</style>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="card rounded-4 shadow">
+            <form id="regForm" action="{{ url_for('welcome') }}" method="POST">
+                <h1>👋 Hi let's setup this first</h1>
+                <p class="text-center">Don't worry you can change this later!</p>
+
+                <div class="tab">Homepage Welcome:
+                    <input class="form-control mt-2" placeholder="Title of the webpage: Alex's website"
+                        oninput="this.className = 'form-control mt-2'" name="webTitle">
+
+                    <input class="form-control mt-2" placeholder="Hi, I am Glorbnak who specializes in autopsy"
+                        oninput="this.className = 'form-control mt-2'" name="webDesc">
+                </div>
+                <div class="tab">About Me:
+                    <textarea class="form-control mt-2" placeholder="I like eating blobs and bugs they are delicious!"
+                        oninput="this.className = 'form-control mt-2'" name="about" style="resize:none;" cols="70"
+                        rows="15" charswidth="23"></textarea>
+                </div>
+
+                <div class="tab">Job Experiences:
+                    <p><input class="form-control mt-2 " placeholder="Current ZortakEmpire Security Analyst"
+                            oninput="this.className = 'form-control mt-2'" name="expTitle">
+                    </p>
+                    <p><textarea class="form-control mt-2" placeholder="I work under the sith lord to do his will"
+                            oninput="this.className = 'form-control mt-2'" name="expBody" style="resize:none;" cols="70"
+                            rows="15" charswidth="23"></textarea></p>
+                </div>
+                <div class="tab">Category:
+                    <p><input class="form-control mt-2" placeholder="Capture The Flag"
+                            oninput="this.className = 'form-control mt-2'" name="category"></p>
+                </div>
+                <div style="overflow:auto;">
+                    <div style="float:right; margin-top: 10px;">
+                        <button type="button" class="btn btn-outline-secondary" id="prevBtn"
+                            onclick="nextPrev(-1)">Previous</button>
+                        <button type="button" class="btn btn-outline-success" id="nextBtn"
+                            onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/steps.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

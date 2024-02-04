@@ -1,0 +1,3 @@
+- Implement a simple typewriter
+- Create a centered horizontal divider for two contents
+- Implement a WYSWYG editor with image handling 

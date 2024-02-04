@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block content %}
+</style>
+<div class="container-fluid">
+    <div class="row mx-3 mt-4">
+        <div class="col">
+            <div class="d-flex justify-content-center align-items-center border border-dark shadow-lg rounded-3"
+                style="height:600px; background: url('https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80') no-repeat; background-position: center; background-size: cover;">
+                <div class="text-left text-white" style=" width: 70%; padding: 20px;">
+                    <h1 style="font-size: 6.5rem;">Welcome</h1>
+                    <!-- 80 characters max -->
+                    <p id="typedtext" data-text="This is the default page. Type at the URL /johnDoe"
+                        style="font-size: 3rem;"></p>
+                    <div class="pt-3">
+                        <button class="btn btn-outline-light px-5">Connect with me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid text-center" style="min-height: 400px; margin-bottom: 100px;">
+    <div class="row mx-3 mt-4">
+        <div class="col">
+            <div class="row">
+                <div class="col-lg-6 mycontent-left" style="margin-top: 5%;">
+                    <h1 style=" font-size: 2.5rem;">About Me</h1>
+                    <p class="custom-wrap paragraph-font">
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including versions
+                        of Lorem Ipsum.
+
+
+                    </p>
+                </div>
+                <div class="col-lg-6" style="margin-top: 5%;">
+                    <h1 style="font-size: 1.5rem;">Experiences</h1>
+                    <br>
+                    <div class="accordion" id="accordionExample" style="height: 300px; overflow-y: auto;">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Current XYZ-abc-doe Security analyst Remote
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                    until the collapse
+                                    plugin adds the appropriate classes that we use to style each element. These classes
+                                    control the overall
+                                    appearance, as well as the showing and hiding via CSS transitions. You can modify
+                                    any of this with
+                                    custom CSS or overriding our default variables. It's also worth noting that just
+                                    about any HTML can go
+                                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse
+                                    plugin adds the appropriate classes that we use to style each element. These classes
+                                    control the overall
+                                    appearance, as well as the showing and hiding via CSS transitions. You can modify
+                                    any of this with
+                                    custom CSS or overriding our default variables. It's also worth noting that just
+                                    about any HTML can go
+                                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                    until the collapse
+                                    plugin adds the appropriate classes that we use to style each element. These classes
+                                    control the overall
+                                    appearance, as well as the showing and hiding via CSS transitions. You can modify
+                                    any of this with
+                                    custom CSS or overriding our default variables. It's also worth noting that just
+                                    about any HTML can go
+                                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid text-center" id="blogs" style="background-color: #F9F8F4; margin-bottom: 40px;">
+    <div class="row mx-3 mt-4">
+        <div class="col">
+            <h1 style="font-size: 2.5rem; margin-top: 40px;">The things that I have been doing</h1>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- First Card -->
+                <div class="col" style="margin-bottom: 40px;">
+                    <div class="card">
+                        <img src="static/images/icon.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the
+                                card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Card -->
+                <div class="col">
+                    <div class="card">
+                        <img src="static/images/icon.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the
+                                card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Card -->
+                <div class="col">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the
+                                card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+{% endblock %}
+
+
+
+<!-- asd -->

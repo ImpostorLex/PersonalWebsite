@@ -1,0 +1,35 @@
+.CustomLink {
+    text-decoration: none;
+    color: #232323;
+}
+
+.mycontent-left {
+    border-right: 1px solid #232323;
+}
+
+.custom-wrap {
+    display: inline-block;
+    width: 450px;
+    overflow-wrap: break-word;
+}
+
+.paragraph-font {
+    font-family: minion-pro;
+    line-height: 1.9;
+}
+
+.card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
