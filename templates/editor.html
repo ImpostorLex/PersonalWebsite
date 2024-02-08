@@ -6,17 +6,24 @@
     <h1 class="text-center">Create a Blog</h1>
     <form method="post">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
-        <div id="titleHelp" class="form-text">Make it a good one!</div>
+        <input type="text" class="form-control" id="title" name="title">
 
+
+        <label for="short_desc" class="form-label">Short Description</label>
+        <input type="text" class="form-control" id="short_desc" name="short_desc" aria-describedby="short_descHelp">
+        <div id="short_descHelp" class="form-text">Keep it short!</div>
+
+        <br>
         <textarea id="summernote" name="editordata"></textarea>
 
-        <select class="form-select" aria-label="Default select example" style="margin-top:20px; margin-bottom: 20px;">
-            <option selected>Choose a category</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+        <select name="category_select" class="form-select" aria-label="Default select example"
+            style="margin-top:20px; margin-bottom: 20px;">
+            <option selected disabled>Choose a category</option>
+            {% for category_name in category_names %}
+            <option value="{{ category_name.id }}">{{ category_name.category_name }}</option>
+            {% endfor %}
         </select>
+
 
         <div class="button-container pb-5">
             <button type="submit" class="btn btn-outline-success">Create</button>
