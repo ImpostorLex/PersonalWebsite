@@ -75,7 +75,7 @@ class userProfile(db.Model):
     
 class userExperience(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title_exp = db.Column(db.String(125), unique=True, nullable=False)
+    title_exp = db.Column(db.String(125), nullable=False)
     body_exp = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
@@ -313,8 +313,8 @@ def editor():
         converted_html = convert_base64_to_image(html_content)
         
         # Insert data
-        content = EditorData(title=title, short_desc=short_desc, content=converted_html,date_created= current_date, 
-                             date_modified=current_date, category_id=category,user_id=user_id )
+        content = EditorData(title=title, short_desc=short_desc, content=converted_html,date_created= formatted_date, 
+                             date_modified=formatted_date, category_id=category,user_id=user_id )
         db.session.add(content)
         db.session.commit()
         

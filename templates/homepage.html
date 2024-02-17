@@ -8,9 +8,6 @@
 
     }
 
-    .nav-link.active {
-        color: black;
-    }
 
     .nav-link:hover {
         color: black;
@@ -20,265 +17,144 @@
     .nav-link {
         color: #6c757d;
     }
+
+    .accordion-item {
+        opacity: 0;
+        transition: opacity 1.5s ease;
+
+    }
+
+    .accordion-item.visible {
+        opacity: 1;
+    }
+
+    .underlined-heading {
+        position: relative;
+    }
+
+    .underlined-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 80%;
+        border-bottom: 2px solid #333;
+    }
 </style>
 
-<div class="container-fluid">
-    <div class="row mx-3 mt-4">
-        <div class="col">
-            <div class="d-flex justify-content-center align-items-center border border-dark shadow-lg rounded-3"
-                style="height:600px; background: url('https://images.unsplash.com/photo-1542662565-7e4b66bae529?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80') no-repeat; background-position: center; background-size: cover;">
-                <div class="text-left text-white" style=" width: 70%; padding: 20px;">
-                    <h1 style="font-size: 6.5rem;">Welcome</h1>
-                    <!-- 80 characters max -->
-                    <p id="typedtext" data-text="{{ userProfile2.desc }}" style=" font-size: 3rem;"></p>
-                    <div class="pt-3">
-                        <button class="btn btn-outline-light px-5">Connect with me</button>
-                    </div>
-                </div>
+
+<div class="container-fluid pt-5" id="about"
+    style="min-height: 400px; background: linear-gradient(to right, #fff, #eee);">
+    <div class="row mx-auto align-items-center">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8 text-left mt-5">
+            <h1 class="underlined-heading" style="font-size: 2.5rem; color: #333;">About Me</h1>
+            <div style="max-height: 200px; overflow-y: auto;">
+                <p style="color: #666; text-align: left;">
+                    {{ userProfile2.about }}
+                </p>
             </div>
         </div>
+        <div class="col-md-2">
+        </div>
     </div>
+
+</div>
+
+<div class="container-fluid" id="Experience"
+    style="min-height: 400px; background: linear-gradient(to left, #fff, #eee);">
+    <div class="row mx-auto align-items-center">
+        <div class="col-md-2">
+
+        </div>
+
+        <div class="col-lg-8 text-left" style="margin-top: 5%;">
+            <h1 style="font-size: 1.5rem; text-align: center; color: #333;">Work Experiences</h1>
+            <div class="accordion" id="accordionExample" style="height: 300px; overflow-y: auto;">
+
+
+                {% for index, item in enumerate(userExperience2) %}
+                <div class="accordion-item ">
+                    <div class="accordion-header" id="heading{{ index }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{ index }}" aria-expanded="false"
+                            aria-controls="collapse{{ index }}">
+                            <span style="font-weight: bold;">{{ item.title_exp }}</span>
+                            <i class="bi bi-chevron-down" style="font-size: 1rem;"></i>
+                        </button>
+                    </div>
+                    <div id="collapse{{ index }}" class="accordion-collapse collapse {% if index == 0 %}show{% endif %}"
+                        aria-labelledby="heading{{ index }}" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p class="mycontent-left" style="color: #666;">{{ item.body_exp }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-md-2">
+        </div>
+    </div>
+
 </div>
 
 
-<div class="container-fluid" style="min-height: 400px; margin-bottom: 100px;">
-    <div class="row mx-3 mt-4">
+<div class="container-fluid" id="tab-angular"
+    style="margin-bottom: 40px; background: linear-gradient(to left, #fff, #eee);">
+    <div class="row mx-auto">
         <div class="col">
-            <div class="row">
-                <div class="col-lg-6 mycontent-left text-center" style="margin-top: 5%;">
-                    <h1 style=" font-size: 2.5rem;">About Me</h1>
-                    <p class="custom-wrap paragraph-font">
-                        {{ userProfile2.about }}
-                    </p>
-                </div>
-                <div class="col-lg-6 text-left" style="margin-top: 5%;">
-                    <h1 style="font-size: 1.5rem; text-align: center;">Experiences</h1>
-                    <br>
-                    <div class="accordion" id="accordionExample" style="height: 300px; overflow-y: auto;">
 
-                        {% for index, item in enumerate(userExperience2) %}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading{{ index }}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse{{ index }}" aria-expanded="true"
-                                    aria-controls="collapse{{ index }}">
-                                    {{ item.title_exp }}
-                                </button>
-                            </h2>
-                            <div id="collapse{{ index }}"
-                                class="accordion-collapse collapse {% if index == 0 %}show{% endif %}"
-                                aria-labelledby="heading{{ index }}" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p class="mycontent-left">{{ item.body_exp }}</p>
+            <div class="mx-auto">
+                <div class="nav nav-tabs justify-content-center" id="myTab" role="tablist" style=" border:0;">
+                    {% if blogs %}
+                    {% for cat, category_blogs in blogs.items() %}
+                    <button class="nav-link{% if loop.first %} active{% endif %}" id="{{ cat }}-tab"
+                        data-bs-toggle="tab" data-bs-target="#{{ cat }}" type="button" role="tab"
+                        aria-controls="{{ cat }}" aria-selected="{{ loop.first }}" style="border:0;">{{ cat
+                        }}</button>
+                    {% endfor %}
+                    {% else %}
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                    {% endif %}
+                </div>
+                <br>
+
+                <div class="tab-content" id="myTabContent">
+                    {% for cat, category_blogs in blogs.items() %}
+                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}" id="{{ cat }}" role="tabpanel"
+                        aria-labelledby="{{ cat }}-tab">
+                        {% if category_blogs %}
+                        {% for blog in category_blogs %}
+                        <div class="card mx-auto mb-3"
+                            style="width: 40%; border-top:0; border-left:0; border-right:0; ">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
+                                        <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
+                                        <p>{{ blog.short_desc }}</p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
+                                            style="width: 150px; height: 150px;">
+                                    </div>
                                 </div>
+                                <a href="#" class="stretched-link"></a>
                             </div>
                         </div>
                         {% endfor %}
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<!-- <div class="container-fluid" id="blogs" style="background-color: #F9F8F4; margin-bottom: 40px;">
-    <div class="row mx-auto mt-4">
-        <div>
-            <h1 style="font-size: 2.5rem; margin-top: 40px; text-align: center;">Pick a card</h1>
-
-            <div class="mx-auto">
-                {% if blogs %}
-                {% for cat, category_blogs in blogs.items() %}
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="{{ cat }}-tab" data-bs-toggle="tab"
-                            data-bs-target="#{{ cat}}" type="button" role="tab" aria-controls="{{ cat }}"
-                            aria-selected="true">{{ cat
-                            }}</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active d-flex flex-column" id="{{ cat }}" role="tabpanel"
-                        aria-labelledby="{{ cat}}-tab">
+                        {% else %}
                         <div class="card mx-auto" style="width: 40%;">
-
-                            {% for blog in category_blogs %}
-                            <div class=" card-body mt-2 mb-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
-                                        <h1 style="font-size: 1.2rem;">{{ blog.title}} </h1>
-                                        <p>{{ blog.short_desc }} </p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
-                                            style="width: 150px; height: 150px;">
-
-                                    </div>
-                                </div>
-                                <a href="#" class="stretched-link"></a>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                </div>
-                {% endfor %}
-                {% else %}
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                            type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active d-flex flex-column" id="home" role="tabpanel"
-                        aria-labelledby="home-tab">
-                        <div class="card mx-auto" style="width: 40%;">
-                            <div class=" card-body mt-2 mb-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <p style="font-size: 0.8rem; color:gray;">Mar 14, 2023</p>
-                                        <h1 style="font-size: 1.2rem;">Hello</h1>
-                                        <p>A UI design
-                                            case study to redesign an example user
-                                            interface
-                                            using
-                                            logical rules or
-                                            guidelines — Last updated in Jan
-                                            2024 User interface design is hard. With so many options to choose from
-                                            regarding
-                                            200,</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
-                                            style="width: 150px; height: 150px;">
-
-                                    </div>
-                                </div>
-                                <a href="#" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-<!-- fake to baba orig taas-->
-
-<!-- <div class="container-fluid" id="blogs" style="background-color: #F9F8F4; margin-bottom: 40px;">
-    <div class="row mx-auto mt-4">
-        <div>
-            <h1 style="font-size: 2.5rem; margin-top: 40px; text-align: center;">Pick a card</h1>
-
-            <div class="mx-auto">
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    {% if blogs %}
-                    {% for cat, category_blogs in blogs.items() %}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link{% if loop.first %} active{% endif %}" id="{{ cat }}-tab"
-                            data-bs-toggle="tab" data-bs-target="#{{ cat }}" type="button" role="tab"
-                            aria-controls="{{ cat }}" aria-selected="{{ loop.first }}">{{ cat }}</button>
-                    </li>
-                    {% endfor %}
-                    {% else %}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                            type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                    </li>
-                    {% endif %}
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    {% for cat, category_blogs in blogs.items() %}
-                    <div class="tab-pane fade{% if loop.first %} show active{% endif %} d-flex flex-column"
-                        id="{{ cat }}" role="tabpanel" aria-labelledby="{{ cat }}-tab">
-                        <div class="card mx-auto" style="width: 40%;">
-                            {% for blog in category_blogs %}
-                            <div class="card-body mt-2 mb-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
-                                        <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
-                                        <p>{{ blog.short_desc }}</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
-                                            style="width: 150px; height: 150px;">
-                                    </div>
-                                </div>
-                                <a href="#" class="stretched-link"></a>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-<div class="container-fluid" id="blogs" style="background-color: #F9F8F4; margin-bottom: 40px;">
-    <div class="row mx-auto mt-4">
-        <div>
-            <h1 style="font-size: 2.5rem; margin-top: 40px; text-align: center;">Pick a card</h1>
-
-            <div class="mx-auto">
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    {% if blogs %}
-                    {% for cat, category_blogs in blogs.items() %}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link{% if loop.first %} active{% endif %}" id="{{ cat }}-tab"
-                            data-bs-toggle="tab" data-bs-target="#{{ cat }}" type="button" role="tab"
-                            aria-controls="{{ cat }}" aria-selected="{{ loop.first }}">{{ cat }}</button>
-                    </li>
-                    {% endfor %}
-                    {% else %}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                            type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                    </li>
-                    {% endif %}
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    {% for cat, category_blogs in blogs.items() %}
-                    <div class="tab-pane fade{% if loop.first %} show active{% endif %} d-flex flex-column"
-                        id="{{ cat }}" role="tabpanel" aria-labelledby="{{ cat }}-tab">
-                        <div class="card mx-auto" style="width: 40%;">
-                            {% if category_blogs %}
-                            {% for blog in category_blogs %}
-                            <div class="card-body mt-2 mb-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
-                                        <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
-                                        <p>{{ blog.short_desc }}</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
-                                            style="width: 150px; height: 150px;">
-                                    </div>
-                                </div>
-                                <a href="#" class="stretched-link"></a>
-                            </div>
-                            {% endfor %}
-                            {% else %}
                             <div class="card-body mt-2 mb-2">
                                 <p>No blogs available for this category.</p>
                             </div>
-                            {% endif %}
                         </div>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
@@ -288,5 +164,12 @@
 </div>
 
 
+<script>
+
+</script>
+<script src="{{ url_for('static', filename='js/stickyNAV.js') }}"></script>
+<script src="{{ url_for('static', filename='js/accordion-right.js') }}"></script>
 <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+
+
 {% endblock %}
