@@ -1,0 +1,77 @@
+<!-- <div class="card mx-auto mb-3" style="width: 40%;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
+                                                <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
+                                                <p>{{ blog.short_desc }}</p>
+                                            </div>
+                                            <div class="col-auto">
+                                                <img src="https://via.placeholder.com/170" class="img-fluid"
+                                                    alt="Sample Image" style="width: 150px; height: 150px;">
+                                            </div>
+                                        </div>
+                                        <a href="#" class="stretched-link"></a>
+                                    </div>
+                                </div> -->
+
+
+<div class="container-fluid" id="tab-angular"
+    style="margin-bottom: 40px; background: linear-gradient(to left, #fff, #eee);">
+    <div class="row mx-auto">
+        <div class="col">
+
+            <div class="mx-auto">
+                <div class="nav nav-tabs justify-content-center" id="myTab" role="tablist" style=" border:0;">
+                    {% if blogs %}
+                    {% for cat, category_blogs in blogs.items() %}
+                    <button class="nav-link{% if loop.first %} active{% endif %}" id="{{ cat }}-tab"
+                        data-bs-toggle="tab" data-bs-target="#{{ cat }}" type="button" role="tab"
+                        aria-controls="{{ cat }}" aria-selected="{{ loop.first }}" style="border:0;">{{ cat
+                        }}</button>
+                    {% endfor %}
+                    {% else %}
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                    {% endif %}
+                </div>
+                <br>
+
+                <div class="tab-content" id="myTabContent">
+                    {% for cat, category_blogs in blogs.items() %}
+                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}" id="{{ cat }}" role="tabpanel"
+                        aria-labelledby="{{ cat }}-tab">
+                        {% if category_blogs %}
+                        {% for blog in category_blogs %}
+                        <div class="card mx-auto mb-3"
+                            style="width: 40%; border-top:0; border-left:0; border-right:0; ">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
+                                        <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
+                                        <p>{{ blog.short_desc }}</p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
+                                            style="width: 150px; height: 150px;">
+                                    </div>
+                                </div>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="card mx-auto" style="width: 40%;">
+                            <div class="card-body mt-2 mb-2">
+                                <p>No blogs available for this category.</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

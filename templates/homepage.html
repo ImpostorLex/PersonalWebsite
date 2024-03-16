@@ -50,7 +50,7 @@
 
         </div>
         <div class="col-md-8 text-left mt-5">
-            <h1 class="underlined-heading" style="font-size: 2.5rem; color: #333;">About Me</h1>
+            <h1 class="underlined-heading" style="font-size: 2.5rem; color: black;">About Me</h1>
             <div style="max-height: 200px; overflow-y: auto;">
                 <p style="color: #666; text-align: left;">
                     {{ userProfile2.about }}
@@ -63,15 +63,22 @@
 
 </div>
 
-<div class="container-fluid" id="Experience"
-    style="min-height: 400px; background: linear-gradient(to left, #fff, #eee);">
+
+
+
+<div class="container-fluid" id="Experience" style="min-height: 400px; background: #eee">
+
+    <div class="row d-flex justify-content-center align-items-center" style="min-height:250px; background-color: #eee;">
+        <div style="color:#222;" class="mt-5 text-center">Experience</div>
+        <h1 style="font-size: 3rem; text-align: center; color: black; font-weight: 900;">My Work Background.</h1>
+    </div>
+    <div class="asymmetric-hr2"></div>
     <div class="row mx-auto align-items-center">
         <div class="col-md-2">
 
         </div>
 
         <div class="col-lg-8 text-left" style="margin-top: 5%;">
-            <h1 style="font-size: 1.5rem; text-align: center; color: #333;">Work Experiences</h1>
             <div class="accordion" id="accordionExample" style="height: 300px; overflow-y: auto;">
 
 
@@ -81,7 +88,7 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapse{{ index }}" aria-expanded="false"
                             aria-controls="collapse{{ index }}">
-                            <span style="font-weight: bold;">{{ item.title_exp }}</span>
+                            <span style="font-weight: bold; color:black">{{ item.title_exp }}</span>
                             <i class="bi bi-chevron-down" style="font-size: 1rem;"></i>
                         </button>
                     </div>
@@ -103,73 +110,114 @@
 </div>
 
 
-<div class="container-fluid" id="tab-angular"
-    style="margin-bottom: 40px; background: linear-gradient(to left, #fff, #eee);">
+
+
+<div class="container-fluid" id="tab-angular" style="margin-bottom: 40px; background: #eee">
+
+    <div class="row d-flex justify-content-center align-items-center"
+        style="min-height:250px; width: 80%; margin:auto; background-color: #eee;">
+        <div style="color:#222;" class="mt-5">Blogs</div>
+        <h1 class="text-left" style="font-size: 3rem;  color: black; font-weight: 600;">What I
+            have
+            been
+            <br>doing.
+        </h1>
+    </div>
+
     <div class="row mx-auto">
         <div class="col">
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                {% for cat, category_blogs in blogs.items() %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if loop.first %} active{% endif %}" id="{{ cat|replace(' ', '-') }}-tab"
+                        data-bs-toggle="tab" data-bs-target="#{{ cat|replace(' ', '-') }}-tab-pane" type="button"
+                        role="tab" aria-controls="{{ cat|replace(' ', '-') }}-tab-pane"
+                        aria-selected="{{ loop.first }}">{{ cat }}</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class=" tab-content" id="myTabContent">
 
-            <div class="mx-auto">
-                <div class="nav nav-tabs justify-content-center" id="myTab" role="tablist" style=" border:0;">
-                    {% if blogs %}
-                    {% for cat, category_blogs in blogs.items() %}
-                    <button class="nav-link{% if loop.first %} active{% endif %}" id="{{ cat }}-tab"
-                        data-bs-toggle="tab" data-bs-target="#{{ cat }}" type="button" role="tab"
-                        aria-controls="{{ cat }}" aria-selected="{{ loop.first }}" style="border:0;">{{ cat
-                        }}</button>
-                    {% endfor %}
-                    {% else %}
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                        type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                    {% endif %}
-                </div>
-                <br>
+                {% for cat, category_blogs in blogs.items() %}
+                <div class="tab-pane fade {% if loop.first %} show active{% endif %}"
+                    id="{{ cat|replace(' ', '-') }}-tab-pane" role="tabpanel"
+                    aria-labelledby="{{ cat|replace(' ', '-') }}-tab" tabindex="0">
 
-                <div class="tab-content" id="myTabContent">
-                    {% for cat, category_blogs in blogs.items() %}
-                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}" id="{{ cat }}" role="tabpanel"
-                        aria-labelledby="{{ cat }}-tab">
-                        {% if category_blogs %}
-                        {% for blog in category_blogs %}
-                        <div class="card mx-auto mb-3"
-                            style="width: 40%; border-top:0; border-left:0; border-right:0; ">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
-                                        <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
-                                        <p>{{ blog.short_desc }}</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
-                                            style="width: 150px; height: 150px;">
-                                    </div>
+                    {% if category_blogs %}
+                    {% for blog in category_blogs %}
+                    <div class="card mx-auto mb-3" style="width: 40%; border-top:0; border-left:0; border-right:0; ">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p style="font-size: 0.8rem; color:gray;">{{ blog.date_created }}</p>
+                                    <h1 style="font-size: 1.2rem;">{{ blog.title }}</h1>
+                                    <p>{{ blog.short_desc }}</p>
                                 </div>
-                                <a href="#" class="stretched-link"></a>
+                                <div class="col-auto">
+                                    <img src="https://via.placeholder.com/170" class="img-fluid" alt="Sample Image"
+                                        style="width: 150px; height: 150px;">
+                                </div>
                             </div>
+                            <a href="#" class="stretched-link"></a>
                         </div>
-                        {% endfor %}
-                        {% else %}
-                        <div class="card mx-auto" style="width: 40%;">
-                            <div class="card-body mt-2 mb-2">
-                                <p>No blogs available for this category.</p>
-                            </div>
-                        </div>
-                        {% endif %}
                     </div>
                     {% endfor %}
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
+<div class="contact-container">
+    <h1 class="h1-contact">CONTACT</h1>
+    <div class="underline">
+    </div>
+    <div class="row justify-content-center" style="margin-top: 50px;">
+        <div class="icon_wrapper col-auto">
+            <i class="fa-brands fa-github fa-2xl mx-2"></i>
+            <i class="fa-brands fa-linkedin fa-2xl mx-2"></i>
+            <i class="fa-brands fa-instagram fa-2xl mx-2"></i>
+        </div>
+    </div>
+    <form action="#" method="post" id="contact_form">
+        <div class="name">
+            <label for="name"></label>
+            <input type="text" placeholder="My name is" name="name" id="name_input" required>
+        </div>
+        <div class="email">
+            <label for="email"></label>
+            <input type="email" placeholder="My e-mail is" name="email" id="email_input" required>
+        </div>
+        <div class="subject">
+            <label for="subject"></label>
+            <select placeholder="Subject line" name="subject" id="subject_input" required>
+                <option disabled hidden selected>Subject line</option>
+                <option>Let's work together</option>
+                <option>I'd like to start a project</option>
+                <option>I'd like to ask a question</option>
+                <option>I'd like to make a proposal</option>
+            </select>
+        </div>
+        <div class="message">
+            <label for="message"></label>
+            <textarea name="message" placeholder="I'd like to chat about" id="message_input" cols="30" rows="5"
+                required></textarea>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Send Message" id="form_button" />
+        </div>
+    </form><!-- // End form -->
+</div><!-- // End #container -->
 
-</script>
+
 <script src="{{ url_for('static', filename='js/stickyNAV.js') }}"></script>
 <script src="{{ url_for('static', filename='js/accordion-right.js') }}"></script>
 <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+
+
 
 
 {% endblock %}
