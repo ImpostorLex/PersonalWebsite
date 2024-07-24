@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row d-flex">
+    <div class="col-lg-8" style="overflow-y: auto;">
+        <div class="container-fluid" style="width:70%; margin-left:25%; margin-top:40px;">
+            <ul class="nav nav-tabs border border-top-0 border-bottom-0 border-start-0" id="myTab" role="tablist">
+
+                {% if is_authenticated %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link border-0 border-start-0" id="" data-bs-toggle="tab"
+                        data-bs-target="" type="button" role="" aria-controls=""
+                        aria-selected="false">+</button>
+                </li>
+                {% endif %}
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link border-0 border-start-0 active" id="home-tab" data-bs-toggle="tab"
+                        data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                        aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link border-0 border-start-0" id="profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
+                        aria-selected="false">Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link border-0 border-start-0" id="contact-tab" data-bs-toggle="tab"
+                        data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+                        aria-selected="false">Contact</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content my-5 " id="myTabContent">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                    tabindex="0">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h4 class="card-title" style="font-weight: 700;">Some Title</h4>
+                                    <p class="card-text">A very nice description
+                                        about it you dish? bro?
+                                        A very nice description about it you dish? bro
+                                        A very nice description about it you dish? bro?
+                                        A very nice description about it you dish? bro
+                                        A very nice description about it you dish? bro?
+                                        Perform text-truncate on Py
+                                    </p>
+                                    <div style="display: flex;">
+                                        <div class="pills">Cybersecurity</div>
+                                        <div class="mt-2" style="margin-left: 10px; color: gray;">7 min read</div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <img src="https://plus.unsplash.com/premium_photo-1711508491465-1f242f42c826?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        class="img-fluid" alt="sans"
+                                        style="max-width: 100%; height: auto; max-height: 180px; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h4 class="card-title" style="font-weight: 700;">Some Title</h4>
+                                    <p class="card-text">A very nice description
+                                        about it you dish? bro?
+                                        A very nice description about it you dish? bro
+                                        A very nice description about it you dish? bro?
+                                        A very nice description about it you dish? bro
+                                        A very nice description about it you dish? bro?
+                                        Perform text-truncate on Py
+                                    </p>
+                                    <div style="display: flex;">
+                                        <div class="pills">Cybersecurity</div>
+                                        <div class="mt-2" style="margin-left: 10px; color: gray;">7 min read</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <img src="https://plus.unsplash.com/premium_photo-1711508491465-1f242f42c826?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        class="img-fluid" alt="sans"
+                                        style="max-width: 100%; height: auto; max-height: 180px; object-fit: cover;">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                </div>
+
+                <!-- Profile Section Tab -->
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                tabindex="0">
+
+                <h1>Alexander Macenas</h1>
+                <br>
+                <h5>Aspiring Cybersecurity Professional</h5>
+                <br>
+                <p>Aspiring Cybersecurity professional - actively searching for a security role. Always eager to learn other technical areas of cybersecurity!</p>
+               
+                <h2>Trainings & Certifications</h2>
+                <ul>
+                    <li><strong>Google Cybersecurity Professional Certificate</strong>: Includes Linux, SQL and Python labs</li>
+                    <li><strong>TCM Security's Practical Ethical Hacking:</strong> Setup and attack Active Directory laboratory</li>
+                    <li><strong>TCM Security's Malware Analysis Triage:</strong> Setup and perform analysis on real world samples</li>
+                </ul>
+
+                <br>
+                <h2>Practical Projects</h2>
+                    <ul>
+                        <li>
+                            Expanded the Active Directory lab and added Wazuh as a SIEM to detect and log attacks.
+                        </li>
+                        <li>
+                            Setup and configure Opnsense Firewall
+                        </li>
+                        <li>
+                            Built a Personal Website using Python Flask
+                        </li>
+                    </ul>
+
+                    <br>
+                    <h2>Experiences</h2>
+                    <h5>Orkestra Communications, QC - 2024</h5>
+                    <h5>Help Desk</h5>
+                    <p>Duties Include:</p>
+                    <ul>
+                        <li>
+                            Performed data entry of assets including computers, IP address, mouse, keyboards and their respective agents assigned, ensuring comprehensive asset tracking
+                        </li>
+                        <li>Developed and implemented a web application to enhance accuracy and efficiency in inventory management</li>
+                        <li>
+                            Basic IT Troubleshooting of hardware and network issues
+                        </li>
+                        <li>
+                            Setup and configured Windows agent PCs, ensuring they met security standards and were properly integrated into the network through Fortigate Firewall
+                        </li>
+                    </ul>
+
+                    <h3>Skills</h3>
+                    <p>Python, Malware Analysis, Active Directory, Opnsense, SQL, Wazuh, Linux</p>
+
+                </div>
+
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                tabindex="0">
+
+                <h5>Email Address</h5>
+                <div class="clipboard-example align-items-center w-50">
+                    <div class="input-group mb-3">
+                        <input id="in01"
+                               type="text"
+                               class="form-control"
+                               placeholder="Email Address"
+                               aria-label="BTC Address"
+                               aria-describedby="btn01"
+                               value="alexxmacenas@gmail.com"
+                               readonly>
+                        <button id="btn01"
+                                class="btn btn-secondary"
+                                type="button"
+                                data-clipboard-demo=""
+                                data-clipboard-target="#in01"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="bottom"
+                                title="Copy to Clipboard"
+                        >Copy</button>
+                    </div>
+                </div>
+
+                <h5><a>LinkedIn</a></h5>
+               <h5><a>Github - Projects</a></h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Removed on medium size screens -->
+    <div class="col-lg-4 d-none d-lg-block">
+        <div class="container-fluid" style="margin: 40px 20px;">
+            <p style="font-weight: 700;">Recently Published</p>
+            <div class="div">
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="text-truncate mb-2" style="color: gray;">L 20 min read - December 22 2024</p>
+                        <h5 class="fw-bold" style="width:65%; margin-bottom: 5px;">THIS IS A H3 ELEMENT AND MUCH LONGER
+                            AND LARGER</h5>
+                    </div>
+                </div>
+                <p clas="mt-1"></p>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="text-truncate mb-2" style="color: gray;">L 20 min read - December 22 2024</p>
+                        <h5 class="fw-bold" style="width:65%; margin-bottom: 5px;">THIS IS A H3 ELEMENT AND MUCH LONGER
+                            AND LARGER</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="text-truncate mb-2" style="color: gray;">L 20 min read - December 22 2024</p>
+                        <h5 class="fw-bold" style="width:65%; margin-bottom: 5px;">THIS IS A H3 ELEMENT AND MUCH LONGER
+                            AND LARGER</h5>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <p class="task-item mt-4" style="font-weight: 700;">What I am doing now</p>
+                <p class="task-item">1. Personal Website Development - <span id="timer1">00:00:00</span></p>
+                <p class="task-item">2. Second Time To Track (Paused) - <span id="timer2">00:00:00</span></p>
+            </div>
+
+
+            <div id="task-list" style="max-width: 60%;">
+                <div class="row">
+
+                    <p class="mt-4" style="font-weight: 700;">Topics</p>
+
+                </div>
+                <!-- Topics down here ignore above -->
+                <div id="topics-row" class="row"></div>
+            </div>
+
+            <!-- Recently followed people -->
+            <div>
+                <p class="task-item mt-4" style="font-weight: 700;">I recently followed them</p>
+                <p class="task-item">AMazing MAN</p>
+                <p class="task-item">GEMINI</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/pills.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+
+<script>
+    document.querySelectorAll('.nav-link').forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-link').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.remove('active-tab-border');
+            });
+
+            // Add active class to the clicked tab
+            tab.classList.add('active');
+            tab.classList.add('active-tab-border');
+        });
+    });
+
+</script>
+
+<script>
+    let btn = document.getElementById('btn01');
+    let clipboard = new ClipboardJS(btn);
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+    
+
+{% endblock %}

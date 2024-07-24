@@ -1,0 +1,43 @@
+body {
+    overflow-x: hidden;
+}
+
+.pills {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        margin-left: auto !important;
+        margin-right: auto;
+
+    }
+}
+
+
+/* MEDIUM LIKE TABS AND CARDS  */
+.card {
+    border: 0;
+}
+
+
+.nav-tabs .nav-item .nav-link {
+    color: gray;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    color: black;
+    border-bottom: 1px solid black !important;
+}
+
+/* MEDIUM LIKE TABS AND CARDS  */

@@ -1,0 +1,1 @@
+1. MEDIUM LIKE TABS AND CARDS AT index.html line 5 to 55 (may change) and 28 to 42 styles.css

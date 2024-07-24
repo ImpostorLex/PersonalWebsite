@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1 class="text-center">Create a Blog</h1>
+    <form method="POST" action="{{ url_for('posts.index') }}">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title">
+        <br>
+        <textarea id="summernote" name="editordata"></textarea>
+
+        <select name="category_select" class="form-select" aria-label="Default select example"
+            style="margin-top:20px; margin-bottom: 20px;">
+            <option selected disabled>Choose a category</option>
+            {% for category_name in category_names %}
+            <option value="{{ category_name.id }}">{{ category_name.category_name }}</option>
+            {% endfor %}
+        </select>
+
+
+        <div class="button-container pb-5">
+            <button type="submit" class="btn btn-outline-success">Create</button>
+            <button type="button" class="btn btn-outline-warning"
+                onclick="window.location.href='/users/akex'">Discard</button>
+        </div>
+    </form>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            codeviewFilter: true,
+            codeviewIframeFilter: true,
+            height: 400,
+            placeholder: "Type something here"
+        });
+    });
+
+
+
+</script>
+{% endblock %}
